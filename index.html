@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeaceProtocol | Global Unity</title>
+    <style>
+        :root {
+            --peace-blue: #00a8ff;
+            --text-dark: #2f3640;
+            --bg-light: #f5f6fa;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .hero {
+            background: white;
+            width: 100%;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .icon { font-size: 100px; margin-bottom: 20px; }
+        .content {
+            max-width: 700px;
+            padding: 40px 20px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        .manifesto-card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-top: -60px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: var(--peace-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="icon">☮️</div>
+        <h1>PeaceProtocol</h1>
+        <p>A Standard for Human Equality</p>
+    </section>
+
+    <div class="content">
+        <div class="manifesto-card">
+            <h2>Our Core Directive</h2>
+            <p>We believe that technology should be a bridge, not a wall. PeaceProtocol is a commitment to treat every human being with the same dignity we expect for ourselves.</p>
+            <p><strong>One World. One Protocol.</strong></p>
+            <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" class="btn" target="_blank">View Universal Rights</a>
+        </div>
+    </div>
+
+</body>
+</html>
