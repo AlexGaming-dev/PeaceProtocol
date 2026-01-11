@@ -23,3 +23,5 @@ We encourage direct support for those protecting human rights on the ground:
 
 ---
 *Status: Active for Humanity.*
+---
+[Short Version](https://alexgaming-dev.github.io/PeaceProtocol/)
