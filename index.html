@@ -9,25 +9,65 @@
             --peace-blue: #00a8ff;
             --text-dark: #2f3640;
             --bg-light: #f5f6fa;
+            --text-dim: #7f8c8d;
         }
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
+
+        /* Entry Overlay */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: pointer;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #overlay .enter-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Main Content initially hidden */
+        #main-wrapper {
+            opacity: 0;
+            transition: opacity 2s ease;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .hero {
             background: white;
             width: 100%;
-            padding: 80px 20px;
+            padding: 80px 0;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .icon { font-size: 100px; margin-bottom: 20px; }
+        
         .content {
             max-width: 700px;
             padding: 40px 20px;
@@ -53,24 +93,78 @@
             transition: 0.3s;
         }
         .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        
+        footer {
+            margin: 40px 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
-<body>
+<body onclick="initPeaceProtocol()">
 
-    <section class="hero">
-        <div class="icon">☮️</div>
-        <h1>PeaceProtocol</h1>
-        <p>A Standard for Human Equality</p>
-    </section>
+    <div id="overlay">
+        <div class="enter-icon">☮️</div>
+        <span style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.7rem; color: #999;">
+            Click to initialize PeaceProtocol
+        </span>
+    </div>
 
-    <div class="content">
-        <div class="manifesto-card">
-            <h2>Our Core Directive</h2>
-            <p>We believe that technology should be a bridge, not a wall. PeaceProtocol is a commitment to treat every human being with the same dignity we expect for ourselves.</p>
-            <p><strong>One World. One Protocol.</strong></p>
-            <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" class="btn" target="_blank">View Universal Rights</a>
+    <audio id="bgMusic" loop>
+        <source src="https://neal.fun/not-a-robot/end/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main-wrapper">
+        <section class="hero">
+            <div class="icon">☮️</div>
+            <h1>PeaceProtocol</h1>
+            <p>A Standard for Human Equality</p>
+        </section>
+
+        <div class="content">
+            <div class="manifesto-card">
+                <h2>Our Core Directive</h2>
+                <p>We believe that technology should be a bridge, not a wall. PeaceProtocol is a commitment to treat every human being with the same dignity we expect for ourselves.</p>
+                <p><strong>One World. One Protocol.</strong></p>
+                <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" class="btn" target="_blank">View Universal Rights</a>
+            </div>
+            
+            <footer>PEACE PROTOCOL // 2026</footer>
         </div>
     </div>
 
+    <script>
+        let isInitialized = false;
+
+        function initPeaceProtocol() {
+            if (isInitialized) return;
+            isInitialized = true;
+
+            const music = document.getElementById('bgMusic');
+            const overlay = document.getElementById('overlay');
+            const wrapper = document.getElementById('main-wrapper');
+
+            // Musik Fade-in
+            music.volume = 0;
+            music.play();
+            let vol = 0;
+            const fadeIn = setInterval(() => {
+                if (vol < 0.3) {
+                    vol += 0.05;
+                    music.volume = vol;
+                } else {
+                    clearInterval(fadeIn);
+                }
+            }, 200);
+
+            // UI Übergang
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                wrapper.style.opacity = '1';
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
